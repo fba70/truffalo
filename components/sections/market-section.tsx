@@ -56,6 +56,13 @@ export function MarketSection() {
               year: "",
               direction: "right",
             },
+            {
+              number: "05",
+              title: "Management Teams",
+              category: "Get insights into your organization ops",
+              year: "",
+              direction: "right",
+            },
           ].map((project, i) => (
             <ProjectCard
               key={i}
@@ -116,9 +123,12 @@ function ProjectCard({
           </p>
         </div>
       </div>
-      <span className="font-mono text-xs text-foreground/30 md:text-sm">
-        {project.year}
-      </span>
     </div>
   )
 }
+
+/*
+<span className="font-mono text-xs text-foreground/30 md:text-sm">
+        {project.year}
+      </span>
+*/

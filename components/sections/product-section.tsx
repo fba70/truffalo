@@ -1,6 +1,14 @@
 "use client"
 
 import { useReveal } from "@/hooks/use-reveal"
+import {
+  CalendarClock,
+  Newspaper,
+  TabletSmartphone,
+  Blocks,
+  SquareScissors,
+  DatabaseBackup,
+} from "lucide-react"
 
 export function ProductSection() {
   const { ref, isVisible } = useReveal(0.3)
@@ -29,32 +37,38 @@ export function ProductSection() {
         <div className="grid gap-x-8 gap-y-4 md:grid-cols-2 md:gap-x-16 md:gap-y-12 lg:gap-x-24">
           {[
             {
+              icon: <CalendarClock />,
               title: "Works while you sleep",
               description: "Search and turns the data into useful content 24x7",
               direction: "top",
             },
             {
+              icon: <Newspaper />,
               title: "Information you need",
               description: "Up-to-date information in the relevant format",
               direction: "right",
             },
             {
+              icon: <TabletSmartphone />,
               title: "Simple user interface",
               description:
                 "Chat with the system or talk to it to get things done",
               direction: "left",
             },
             {
+              icon: <Blocks />,
               title: "Get more done as you grow",
               description: "Configure new processes and tools without coding",
               direction: "bottom",
             },
             {
+              icon: <SquareScissors />,
               title: "Knows your processes and tools",
               description: "Facilitates processes across tasks and teams",
               direction: "center-left",
             },
             {
+              icon: <DatabaseBackup />,
               title: "Automate migration and setup",
               description: "Reduce the time-to-market and migration risks",
               direction: "center-right",
@@ -78,7 +92,12 @@ function ServiceCard({
   index,
   isVisible,
 }: {
-  service: { title: string; description: string; direction: string }
+  service: {
+    icon: React.ReactNode
+    title: string
+    description: string
+    direction: string
+  }
   index: number
   isVisible: boolean
 }) {
@@ -112,6 +131,7 @@ function ServiceCard({
         <span className="font-mono text-xs text-foreground/60">
           0{index + 1}
         </span>
+        <span>{service.icon}</span>
       </div>
       <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">
         {service.title}
