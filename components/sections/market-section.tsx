@@ -2,7 +2,7 @@
 
 import { useReveal } from "@/hooks/use-reveal"
 
-export function WorkSection() {
+export function MarketSection() {
   const { ref, isVisible } = useReveal(0.3)
 
   return (
@@ -13,40 +13,56 @@ export function WorkSection() {
       <div className="mx-auto w-full max-w-7xl">
         <div
           className={`mb-12 transition-all duration-700 md:mb-16 ${
-            isVisible ? "translate-x-0 opacity-100" : "-translate-x-12 opacity-0"
+            isVisible
+              ? "translate-x-0 opacity-100"
+              : "-translate-x-12 opacity-0"
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            Featured
+            We Build For:
           </h2>
-          <p className="font-mono text-sm text-foreground/60 md:text-base">/ Recent explorations</p>
+          <p className="font-mono text-sm text-foreground/60 md:text-base">
+            / but not limited to ...
+          </p>
         </div>
 
         <div className="space-y-6 md:space-y-8">
           {[
             {
               number: "01",
-              title: "Kinetic Typography",
-              category: "Interactive Experience",
-              year: "2024",
+              title: "Sales Representatives",
+              category: "We add value rather than frustration",
+              year: "",
               direction: "left",
             },
             {
               number: "02",
-              title: "Generative Patterns",
-              category: "Visual System",
-              year: "2024",
+              title: "Product Marketing Managers",
+              category: "Bridge the gap with sales and customers",
+              year: "",
               direction: "right",
             },
             {
               number: "03",
-              title: "Spatial Interface",
-              category: "3D Navigation",
-              year: "2023",
+              title: "Customer Care Teams",
+              category: "Providing exceptional support and service",
+              year: "",
               direction: "left",
             },
+            {
+              number: "04",
+              title: "Human Resource Professionals",
+              category: "Manage your workforce with ease and efficiency",
+              year: "",
+              direction: "right",
+            },
           ].map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} isVisible={isVisible} />
+            <ProjectCard
+              key={i}
+              project={project}
+              index={i}
+              isVisible={isVisible}
+            />
           ))}
         </div>
       </div>
@@ -59,13 +75,21 @@ function ProjectCard({
   index,
   isVisible,
 }: {
-  project: { number: string; title: string; category: string; year: string; direction: string }
+  project: {
+    number: string
+    title: string
+    category: string
+    year: string
+    direction: string
+  }
   index: number
   isVisible: boolean
 }) {
   const getRevealClass = () => {
     if (!isVisible) {
-      return project.direction === "left" ? "-translate-x-16 opacity-0" : "translate-x-16 opacity-0"
+      return project.direction === "left"
+        ? "-translate-x-16 opacity-0"
+        : "translate-x-16 opacity-0"
     }
     return "translate-x-0 opacity-100"
   }
@@ -87,10 +111,14 @@ function ProjectCard({
           <h3 className="mb-1 font-sans text-2xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-3xl lg:text-4xl">
             {project.title}
           </h3>
-          <p className="font-mono text-xs text-foreground/50 md:text-sm">{project.category}</p>
+          <p className="font-mono text-xs text-foreground/50 md:text-sm">
+            {project.category}
+          </p>
         </div>
       </div>
-      <span className="font-mono text-xs text-foreground/30 md:text-sm">{project.year}</span>
+      <span className="font-mono text-xs text-foreground/30 md:text-sm">
+        {project.year}
+      </span>
     </div>
   )
 }

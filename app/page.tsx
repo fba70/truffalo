@@ -3,12 +3,13 @@
 import { Shader, ChromaFlow, Swirl } from "shaders/react"
 import { CustomCursor } from "@/components/custom-cursor"
 import { GrainOverlay } from "@/components/grain-overlay"
-import { WorkSection } from "@/components/sections/work-section"
-import { ServicesSection } from "@/components/sections/services-section"
-import { AboutSection } from "@/components/sections/about-section"
+import { MarketSection } from "@/components/sections/market-section"
+import { ProductSection } from "@/components/sections/product-section"
+import { TeamSection } from "@/components/sections/team-section"
 import { ContactSection } from "@/components/sections/contact-section"
 import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
+import Image from "next/image"
 
 export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -17,7 +18,7 @@ export default function Home() {
   const touchStartY = useRef(0)
   const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
-  const scrollThrottleRef = useRef<number>()
+  const scrollThrottleRef = useRef<number | null>(null)
 
   useEffect(() => {
     const checkShaderReady = () => {
@@ -89,8 +90,12 @@ export default function Home() {
 
     const container = scrollContainerRef.current
     if (container) {
-      container.addEventListener("touchstart", handleTouchStart, { passive: true })
-      container.addEventListener("touchmove", handleTouchMove, { passive: false })
+      container.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      })
+      container.addEventListener("touchmove", handleTouchMove, {
+        passive: false,
+      })
       container.addEventListener("touchend", handleTouchEnd, { passive: true })
     }
 
@@ -116,7 +121,9 @@ export default function Home() {
         })
 
         const sectionWidth = scrollContainerRef.current.offsetWidth
-        const newSection = Math.round(scrollContainerRef.current.scrollLeft / sectionWidth)
+        const newSection = Math.round(
+          scrollContainerRef.current.scrollLeft / sectionWidth,
+        )
         if (newSection !== currentSection) {
           setCurrentSection(newSection)
         }
@@ -137,11 +144,11 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollThrottleRef.current) return
+      if (scrollThrottleRef.current !== null) return
 
       scrollThrottleRef.current = requestAnimationFrame(() => {
         if (!scrollContainerRef.current) {
-          scrollThrottleRef.current = undefined
+          scrollThrottleRef.current = null
           return
         }
 
@@ -149,11 +156,15 @@ export default function Home() {
         const scrollLeft = scrollContainerRef.current.scrollLeft
         const newSection = Math.round(scrollLeft / sectionWidth)
 
-        if (newSection !== currentSection && newSection >= 0 && newSection <= 4) {
+        if (
+          newSection !== currentSection &&
+          newSection >= 0 &&
+          newSection <= 4
+        ) {
           setCurrentSection(newSection)
         }
 
-        scrollThrottleRef.current = undefined
+        scrollThrottleRef.current = null
       })
     }
 
@@ -172,17 +183,7 @@ export default function Home() {
     }
   }, [currentSection])
 
-  return (
-    <main className="relative h-screen w-full overflow-hidden bg-background">
-      <CustomCursor />
-      <GrainOverlay />
-
-      <div
-        ref={shaderContainerRef}
-        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-        style={{ contain: "strict" }}
-      >
-        <Shader className="h-full w-full">
+  /*
           <Swirl
             colorA="#1275d8"
             colorB="#e19136"
@@ -208,6 +209,46 @@ export default function Home() {
             maskType="alpha"
             opacity={0.97}
           />
+  */
+
+  // <CustomCursor />
+
+  return (
+    <main className="relative h-screen w-full overflow-hidden bg-background">
+      <CustomCursor />
+      <GrainOverlay />
+
+      <div
+        ref={shaderContainerRef}
+        className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
+        style={{ contain: "strict" }}
+      >
+        <Shader className="h-full w-full">
+          <Swirl
+            colorA="#1275d8"
+            colorB="#600C6E"
+            speed={0.8}
+            detail={0.8}
+            blend={50}
+            coarseX={40}
+            coarseY={40}
+            mediumX={40}
+            mediumY={40}
+            fineX={40}
+            fineY={40}
+          />
+          <ChromaFlow
+            baseColor="#0066ff"
+            upColor="#0066ff"
+            downColor="#d1d1d1"
+            leftColor="#600C6E"
+            rightColor="#600C6E"
+            intensity={0.9}
+            radius={1.8}
+            momentum={25}
+            maskType="alpha"
+            opacity={0.97}
+          />
         </Shader>
         <div className="absolute inset-0 bg-black/20" />
       </div>
@@ -222,32 +263,46 @@ export default function Home() {
           className="flex items-center gap-2 transition-transform hover:scale-105"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
-            <span className="font-sans text-xl font-bold text-foreground">A</span>
+            <Image
+              src="/T_icon.jpg"
+              alt="TRUFFALO.AI Logo"
+              width={40}
+              height={40}
+              className="border-2 border-foreground rounded-full overflow-hidden object-cover"
+            />
           </div>
-          <span className="font-sans text-xl font-semibold tracking-tight text-foreground">Acme</span>
+          <span className="font-sans text-2xl md:text-3xl font-semibold text-foreground tracking-wide">
+            TRUFFALO.AI
+          </span>
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Work", "Services", "About", "Contact"].map((item, index) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(index)}
-              className={`group relative font-sans text-sm font-medium transition-colors ${
-                currentSection === index ? "text-foreground" : "text-foreground/80 hover:text-foreground"
-              }`}
-            >
-              {item}
-              <span
-                className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
-                  currentSection === index ? "w-full" : "w-0 group-hover:w-full"
+          {["Home", "Market", "Product", "Team", "Contact"].map(
+            (item, index) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(index)}
+                className={`group relative font-sans text-sm font-medium transition-colors ${
+                  currentSection === index
+                    ? "text-foreground"
+                    : "text-foreground/80 hover:text-foreground"
                 }`}
-              />
-            </button>
-          ))}
+              >
+                {item}
+                <span
+                  className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
+                    currentSection === index
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </button>
+            ),
+          )}
         </div>
 
         <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
-          Get Started
+          Get Notified
         </MagneticButton>
       </nav>
 
@@ -261,40 +316,58 @@ export default function Home() {
       >
         {/* Hero Section */}
         <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
-          <div className="max-w-3xl">
-            <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
-              <p className="font-mono text-xs text-foreground/90">WebGL Powered Design</p>
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full">
+            <div className="max-w-3xl">
+              <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
+                <p className="font-mono text-xs text-foreground/90">
+                  Agentic AI Business Automation Platform
+                </p>
+              </div>
+              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
+                <span className="text-balance">
+                  The Agentic
+                  <br />
+                  Truffle Pig
+                </span>
+              </h1>
+              <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
+                <span className="text-pretty">
+                  Revenue Operating System For Your Business
+                </span>
+              </p>
+              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+                <MagneticButton
+                  size="lg"
+                  variant="primary"
+                  onClick={() => scrollToSection(2)}
+                >
+                  Product Features
+                </MagneticButton>
+                <MagneticButton
+                  size="lg"
+                  variant="secondary"
+                  onClick={() => scrollToSection(4)}
+                >
+                  Get Notified
+                </MagneticButton>
+              </div>
             </div>
-            <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-              <span className="text-balance">
-                Creative experiences
-                <br />
-                in fluid motion
-              </span>
-            </h1>
-            <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
-              <span className="text-pretty">
-                Transforming digital spaces with dynamic shader effects and real-time visual experiences that captivate
-                and inspire.
-              </span>
-            </p>
-            <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
-              <MagneticButton
-                size="lg"
-                variant="primary"
-                onClick={() => window.open("https://v0.app/templates/R3n0gnvYFbO", "_blank")}
-              >
-                Open in v0
-              </MagneticButton>
-              <MagneticButton size="lg" variant="secondary" onClick={() => scrollToSection(2)}>
-                View Demo
-              </MagneticButton>
+
+            <div>
+              <Image
+                src="/T_logo.jpg"
+                alt="TRUFFALO.AI Logo"
+                width={400}
+                height={400}
+              />
             </div>
           </div>
 
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
+          <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
             <div className="flex items-center gap-2">
-              <p className="font-mono text-xs text-foreground/80">Scroll to explore</p>
+              <p className="font-mono text-xs text-foreground/80">
+                Scroll to explore
+              </p>
               <div className="flex h-6 w-12 items-center justify-center rounded-full border border-foreground/20 bg-foreground/15 backdrop-blur-md">
                 <div className="h-2 w-2 animate-pulse rounded-full bg-foreground/80" />
               </div>
@@ -302,9 +375,9 @@ export default function Home() {
           </div>
         </section>
 
-        <WorkSection />
-        <ServicesSection />
-        <AboutSection scrollToSection={scrollToSection} />
+        <MarketSection />
+        <ProductSection />
+        <TeamSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
 
