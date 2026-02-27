@@ -318,11 +318,6 @@ export default function Home() {
         <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full">
             <div className="max-w-3xl">
-              <div className="mb-4 inline-block animate-in fade-in slide-in-from-bottom-4 rounded-full border border-foreground/20 bg-foreground/15 px-4 py-1.5 backdrop-blur-md duration-700">
-                <p className="font-mono text-xs text-foreground/90">
-                  Agentic AI Business Automation Platform
-                </p>
-              </div>
               <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
                 <span className="text-balance">
                   The Agentic
@@ -353,12 +348,14 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
+            <div className="w-64 md:w-64 lg:w-96">
               <Image
                 src="/T_logo.jpg"
                 alt="TRUFFALO.AI Logo"
                 width={400}
                 height={400}
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 400px"
+                className="object-contain w-full h-auto"
               />
             </div>
           </div>

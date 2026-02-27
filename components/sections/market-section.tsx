@@ -12,21 +12,21 @@ export function MarketSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-12 transition-all duration-700 md:mb-16 ${
+          className={`mb-8 transition-all duration-700 md:mb-16 ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "-translate-x-12 opacity-0"
           }`}
         >
           <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
-            We Build Truffalo.ai For:
+            We Build For:
           </h2>
           <p className="font-mono text-sm text-foreground/60 md:text-base">
             / but not limited to ...
           </p>
         </div>
 
-        <div className="space-y-6 md:space-y-8">
+        <div className="space-y-6 md:space-y-10">
           {[
             {
               number: "01",

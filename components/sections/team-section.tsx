@@ -27,11 +27,8 @@ export function TeamSection({
                   : "-translate-y-12 opacity-0"
               }`}
             >
-              <h2 className="mb-3 font-sans text-3xl font-light leading-[1.1] tracking-tight text-foreground md:mb-4 md:text-6xl lg:text-7xl">
-                We build the
-                <br />
-                future of
-                <span className="text-foreground/40 pl-4">digital</span>
+              <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+                Our Team
               </h2>
             </div>
 
@@ -46,14 +43,10 @@ export function TeamSection({
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 Expertise, Experience, Complementarity, Dedication
               </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/50 md:text-base">
-                We worked across the globe and speak 8 languages to bring you
-                the best of AI agents and human collaboration
-              </p>
             </div>
 
             <div
-              className={`mt-8 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
+              className={`mt-6 flex flex-wrap gap-3 transition-all duration-700 md:mt-16 md:gap-4 ${
                 isVisible
                   ? "translate-y-0 opacity-100"
                   : "translate-y-12 opacity-0"
@@ -71,7 +64,7 @@ export function TeamSection({
           </div>
 
           {/* Right side - Stats with creative layout */}
-          <div className="flex flex-col justify-center space-y-6 md:space-y-12">
+          <div className="flex flex-col justify-center space-y-4 md:space-y-12">
             {[
               {
                 value: "/E.png",
@@ -107,10 +100,10 @@ export function TeamSection({
               return (
                 <div
                   key={i}
-                  className={`flex items-baseline gap-2 border-l border-foreground/30 pl-4 transition-all duration-700 md:gap-8 md:pl-8 ${getRevealClass()}`}
+                  className={`flex items-baseline gap-2 border-l border-foreground/30 pl-4 transition-all duration-700 md:gap-8 md:pl-4 ${getRevealClass()}`}
                   style={{
                     transitionDelay: `${300 + i * 150}ms`,
-                    marginLeft: i % 2 === 0 ? "0" : "auto",
+                    marginLeft: i % 2 === 0 ? "0" : "0",
                     maxWidth: i % 2 === 0 ? "100%" : "85%",
                   }}
                 >
