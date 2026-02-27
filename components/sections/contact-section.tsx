@@ -72,7 +72,7 @@ export function ContactSection() {
                 Let's talk
               </h2>
               <p className="font-mono text-xs text-foreground/60 md:text-base">
-                / Get in touch
+                / Get in touch with us
               </p>
             </div>
 

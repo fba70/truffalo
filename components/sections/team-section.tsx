@@ -46,8 +46,9 @@ export function TeamSection({
               <p className="max-w-md text-sm leading-relaxed text-foreground/90 md:text-lg">
                 Expertise, Experience, Complementarity, Dedication
               </p>
-              <p className="max-w-md text-sm leading-relaxed text-foreground/50 md:text-lg">
-                We worked across the globe and speak 8 languages
+              <p className="max-w-md text-sm leading-relaxed text-foreground/50 md:text-base">
+                We worked across the globe and speak 8 languages to bring you
+                the best of AI agents and human collaboration
               </p>
             </div>
 
