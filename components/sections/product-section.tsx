@@ -26,7 +26,7 @@ export function ProductSection() {
               : "-translate-y-12 opacity-0"
           }`}
         >
-          <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h2 className="mb-2 font-sans text-4xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             Product Features
           </h2>
         </div>
@@ -130,10 +130,10 @@ function ServiceCard({
         </span>
         <span>{service.icon}</span>
       </div>
-      <h3 className="mb-2 font-sans text-2xl font-light text-foreground md:text-3xl">
+      <h3 className="mb-2 font-sans text-xl font-light text-foreground md:text-3xl">
         {service.title}
       </h3>
-      <p className="max-w-sm text-sm leading-relaxed text-foreground/80 md:text-base">
+      <p className="max-w-sm text-sm leading-relaxed text-foreground/60 md:text-base">
         {service.description}
       </p>
     </div>

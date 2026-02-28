@@ -27,7 +27,7 @@ export function TeamSection({
                   : "-translate-y-12 opacity-0"
               }`}
             >
-              <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+              <h2 className="mb-2 font-sans text-4xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 Our Team
               </h2>
             </div>

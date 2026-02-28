@@ -79,7 +79,8 @@ export function ContactSection() {
                 Let's talk
               </h2>
               <p className="font-mono text-xs text-foreground/60 md:text-base">
-                / Get in touch with us
+                / Get in touch with us to get info about
+                <br />/ the product and investment opportunities
               </p>
             </div>
 
@@ -100,7 +101,7 @@ export function ContactSection() {
                   </span>
                 </div>
                 <p className="text-base text-foreground transition-colors group-hover:text-foreground/70 md:text-2xl">
-                  hello@truffalo.ai
+                  contact@melik.biz
                 </p>
               </a>
 

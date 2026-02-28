@@ -12,13 +12,13 @@ export function MarketSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div
-          className={`mb-4 transition-all duration-700 md:mb-16 ${
+          className={`mb-2 transition-all duration-700 md:mb-12 ${
             isVisible
               ? "translate-x-0 opacity-100"
               : "-translate-x-12 opacity-0"
           }`}
         >
-          <h2 className="mb-2 font-sans text-5xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
+          <h2 className="font-sans text-4xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
             We Build For:
           </h2>
         </div>
@@ -42,14 +42,14 @@ export function MarketSection() {
             {
               number: "03",
               title: "Customer Care Teams",
-              category: "Providing exceptional support and service",
+              category: "Providing exceptional support service",
               year: "",
               direction: "left",
             },
             {
               number: "04",
               title: "Human Resource Professionals",
-              category: "Manage your workforce with ease and efficiency",
+              category: "Manage your workforce with efficiency",
               year: "",
               direction: "right",
             },
@@ -100,7 +100,7 @@ function ProjectCard({
 
   return (
     <div
-      className={`group flex items-center justify-between border-b border-foreground/10 py-6 transition-all duration-700 hover:border-foreground/20 md:py-8 ${getRevealClass()}`}
+      className={`group flex items-center justify-between border-b border-foreground/10 py-4 transition-all duration-700 hover:border-foreground/20 md:py-6 ${getRevealClass()}`}
       style={{
         transitionDelay: `${index * 150}ms`,
         marginLeft: index % 2 === 0 ? "0" : "auto",
@@ -112,10 +112,10 @@ function ProjectCard({
           {project.number}
         </span>
         <div>
-          <h3 className="mb-1 font-sans text-2xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-3xl lg:text-4xl">
+          <h3 className="mb-1 font-sans text-xl font-light text-foreground transition-transform duration-300 group-hover:translate-x-2 md:text-3xl lg:text-4xl">
             {project.title}
           </h3>
-          <p className="font-mono text-xs text-foreground/50 md:text-sm">
+          <p className="font-mono text-xs text-foreground/60 md:text-sm">
             {project.category}
           </p>
         </div>

@@ -183,36 +183,6 @@ export default function Home() {
     }
   }, [currentSection])
 
-  /*
-          <Swirl
-            colorA="#1275d8"
-            colorB="#e19136"
-            speed={0.8}
-            detail={0.8}
-            blend={50}
-            coarseX={40}
-            coarseY={40}
-            mediumX={40}
-            mediumY={40}
-            fineX={40}
-            fineY={40}
-          />
-          <ChromaFlow
-            baseColor="#0066ff"
-            upColor="#0066ff"
-            downColor="#d1d1d1"
-            leftColor="#e19136"
-            rightColor="#e19136"
-            intensity={0.9}
-            radius={1.8}
-            momentum={25}
-            maskType="alpha"
-            opacity={0.97}
-          />
-  */
-
-  // <CustomCursor />
-
   return (
     <main className="relative h-screen w-full overflow-hidden bg-background">
       <CustomCursor />
@@ -254,13 +224,13 @@ export default function Home() {
       </div>
 
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 ${
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 bg-gray-800/70 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
         <button
           onClick={() => scrollToSection(0)}
-          className="flex items-center gap-2 transition-transform hover:scale-105"
+          className="flex items-center gap-3 transition-transform hover:scale-105"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
             <Image
@@ -272,7 +242,7 @@ export default function Home() {
             />
           </div>
           <span className="font-sans text-2xl md:text-3xl font-semibold text-foreground tracking-wide">
-            TRUFFALO.AI
+            truffalo.ai
           </span>
         </button>
 
@@ -302,7 +272,7 @@ export default function Home() {
         </div>
 
         <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
-          Get Notified
+          Contact Us
         </MagneticButton>
       </nav>
 
@@ -336,14 +306,14 @@ export default function Home() {
                   variant="primary"
                   onClick={() => scrollToSection(2)}
                 >
-                  Product Features
+                  Product Info
                 </MagneticButton>
                 <MagneticButton
                   size="lg"
                   variant="secondary"
                   onClick={() => scrollToSection(4)}
                 >
-                  Get Notified
+                  Contact Us
                 </MagneticButton>
               </div>
             </div>
