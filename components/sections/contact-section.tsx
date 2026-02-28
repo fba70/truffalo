@@ -1,16 +1,22 @@
 "use client"
 
-import { Mail, MapPin } from "lucide-react"
+import { Mail, MapPin, Linkedin, Globe } from "lucide-react"
 import { useReveal } from "@/hooks/use-reveal"
-import { useState, type FormEvent } from "react"
-import { MagneticButton } from "@/components/magnetic-button"
+import Image from "next/image"
+import Link from "next/link"
+// import { useState, type FormEvent } from "react"
+// import { MagneticButton } from "@/components/magnetic-button"
 
 export function ContactSection() {
   const { ref, isVisible } = useReveal(0.3)
+
+  /*
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
+  */
 
+  /*
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -31,6 +37,7 @@ export function ContactSection() {
     // Reset success message after 5 seconds
     setTimeout(() => setSubmitSuccess(false), 5000)
   }
+    */
 
   /*
               <div
@@ -60,7 +67,7 @@ export function ContactSection() {
     >
       <div className="mx-auto w-full max-w-7xl">
         <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-24">
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col justify-center pl-6">
             <div
               className={`mb-6 transition-all duration-700 md:mb-12 ${
                 isVisible
@@ -115,12 +122,73 @@ export function ContactSection() {
                   Vienna, AUSTRIA
                 </p>
               </div>
+
+              <div
+                className={`transition-all duration-700 ${
+                  isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-12 opacity-0"
+                }`}
+                style={{ transitionDelay: "350ms" }}
+              >
+                <div className="mb-1 flex items-center gap-2">
+                  <Linkedin className="h-3 w-3 text-foreground/60" />
+                  <span className="font-mono text-xs text-foreground/60">
+                    LinkedIn
+                  </span>
+                </div>
+                <div className="text-base text-foreground md:text-2xl gap-8 md:gap-10 flex flex-wrap justify-start">
+                  <Link
+                    href="https://www.linkedin.com/in/elemermelik/"
+                    target="_blank"
+                    className="flex flex-row items-center justify-center gap-2"
+                  >
+                    <Globe size={20} />
+                    Elemer
+                  </Link>
+
+                  <Link
+                    href="https://www.linkedin.com/in/sebastian-gypser-0805403/"
+                    target="_blank"
+                    className="flex flex-row items-center justify-center gap-2"
+                  >
+                    <Globe size={20} />
+                    Sebastian
+                  </Link>
+
+                  <Link
+                    href="https://www.linkedin.com/in/bfedotov/"
+                    target="_blank"
+                    className="flex flex-row items-center justify-center gap-2"
+                  >
+                    <Globe size={20} /> Boris
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Right side - Minimal form */}
-          <div className="flex flex-col justify-center">
-            <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+          <div className="flex flex-col justify-center items-center">
+            <div className="w-72 md:w-64 lg:w-96">
+              <Image
+                src="/T_logo.jpg"
+                alt="TRUFFALO.AI Logo"
+                width={400}
+                height={400}
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 400px"
+                className="object-contain w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/*
+<form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
               <div
                 className={`transition-all duration-700 ${
                   isVisible
@@ -213,9 +281,4 @@ export function ContactSection() {
                 )}
               </div>
             </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+*/

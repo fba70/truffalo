@@ -64,7 +64,7 @@ export function TeamSection({
           </div>
 
           {/* Right side - Stats with creative layout */}
-          <div className="flex flex-col justify-center space-y-4 md:space-y-12">
+          <div className="flex flex-col justify-center space-y-8 md:space-y-12">
             {[
               {
                 value: "/E.png",
@@ -100,11 +100,9 @@ export function TeamSection({
               return (
                 <div
                   key={i}
-                  className={`flex items-baseline gap-2 border-l border-foreground/30 pl-4 transition-all duration-700 md:gap-8 md:pl-4 ${getRevealClass()}`}
+                  className={`flex items-center gap-4 border-l border-foreground/30 pl-4 transition-all duration-700 md:gap-8 md:pl-4 ${getRevealClass()}`}
                   style={{
                     transitionDelay: `${300 + i * 150}ms`,
-                    marginLeft: i % 2 === 0 ? "0" : "0",
-                    maxWidth: i % 2 === 0 ? "100%" : "85%",
                   }}
                 >
                   <Image
@@ -112,14 +110,14 @@ export function TeamSection({
                     alt={stat.label}
                     width={120}
                     height={120}
-                    className="border-2 border-foreground rounded-full overflow-hidden object-cover"
+                    className="border-2 border-foreground rounded-full overflow-hidden object-cover size-24 md:size-36"
                   />
 
-                  <div>
-                    <div className="font-sans text-base font-light text-foreground md:text-4xl">
+                  <div className="flex flex-col justify-start">
+                    <div className="font-sans text-xl font-light text-foreground md:text-4xl">
                       {stat.label}
                     </div>
-                    <div className="font-mono text-xs text-foreground/60 md:text-xl">
+                    <div className="font-mono text-lg text-foreground/60 md:text-2xl">
                       {stat.sublabel}
                     </div>
                     <div className="font-mono text-xs text-foreground/60 md:text-base">
