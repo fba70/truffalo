@@ -9,6 +9,12 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "TRUFFALO.AI",
   description: "Value beyound the visible",
+  keywords: ["TRUFFALO.AI", "AI", "CRM", "AI-agents", "automation", "agentic"],
+  openGraph: {
+    title: "TRUFFALO.AI",
+    description: "TRUFFALO.AI - Value beyond the visible",
+    images: "/opengraph-image.jpg",
+  },
 }
 
 export default function RootLayout({
