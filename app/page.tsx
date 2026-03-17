@@ -1,8 +1,6 @@
 "use client"
 
-import { Shader, ChromaFlow, Swirl } from "shaders/react"
-import { CustomCursor } from "@/components/custom-cursor"
-import { GrainOverlay } from "@/components/grain-overlay"
+import { Shader, Swirl } from "shaders/react"
 import { MarketSection } from "@/components/sections/market-section"
 import { ProductSection } from "@/components/sections/product-section"
 import { TeamSection } from "@/components/sections/team-section"
@@ -15,6 +13,7 @@ export default function Home() {
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [isLoaded, setIsLoaded] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
   const touchStartY = useRef(0)
   const touchStartX = useRef(0)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
@@ -185,13 +184,10 @@ export default function Home() {
 
   return (
     <main className="relative h-screen w-full overflow-hidden bg-background">
-      <CustomCursor />
-      <GrainOverlay />
-
       <div
         ref={shaderContainerRef}
         className={`fixed inset-0 z-0 transition-opacity duration-700 ${isLoaded ? "opacity-100" : "opacity-0"}`}
-        style={{ contain: "strict" }}
+        style={{ contain: "strict", pointerEvents: "none" }}
       >
         <Shader className="h-full w-full">
           <Swirl
@@ -207,32 +203,20 @@ export default function Home() {
             fineX={40}
             fineY={40}
           />
-          <ChromaFlow
-            baseColor="#0066ff"
-            upColor="#0066ff"
-            downColor="#d1d1d1"
-            leftColor="#600C6E"
-            rightColor="#600C6E"
-            intensity={0.9}
-            radius={1.8}
-            momentum={25}
-            maskType="alpha"
-            opacity={0.97}
-          />
         </Shader>
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
       <nav
-        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 transition-opacity duration-700 md:px-12 bg-gray-800/70 ${
+        className={`fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-4 py-6 transition-opacity duration-700 md:px-12 bg-gray-800/70 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
         <button
           onClick={() => scrollToSection(0)}
-          className="flex items-center gap-3 transition-transform hover:scale-105"
+          className="flex items-center gap-2 md:gap-3 transition-transform hover:scale-105"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
+          <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
             <Image
               src="/T_icon.jpg"
               alt="TRUFFALO.AI Logo"
@@ -241,18 +225,18 @@ export default function Home() {
               className="border-2 border-foreground rounded-full overflow-hidden object-cover"
             />
           </div>
-          <span className="font-sans text-2xl md:text-3xl font-semibold text-foreground tracking-wide">
-            truffalo.ai
+          <span className="font-sans text-xl md:text-3xl font-semibold tracking-wide bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
+            TRUFFALO.AI
           </span>
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Market", "Product", "Team", "Contact"].map(
+          {["Home", "Challenge", "Solution", "Team", "Contact"].map(
             (item, index) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(index)}
-                className={`group relative font-sans text-sm font-medium transition-colors ${
+                className={`group relative font-sans text-base font-medium transition-colors ${
                   currentSection === index
                     ? "text-foreground"
                     : "text-foreground/80 hover:text-foreground"
@@ -271,9 +255,60 @@ export default function Home() {
           )}
         </div>
 
-        <MagneticButton variant="secondary" onClick={() => scrollToSection(4)}>
-          Contact Us
-        </MagneticButton>
+        <div className="flex items-center gap-3">
+          <MagneticButton
+            variant="secondary"
+            onClick={() => scrollToSection(4)}
+            className="text-xs px-2 py-1.5 md:text-sm md:px-4 md:py-2"
+          >
+            Contact Us
+          </MagneticButton>
+
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="md:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg bg-foreground/15 backdrop-blur-md transition-all hover:bg-foreground/25"
+            aria-label="Open menu"
+          >
+            <span className="w-5 h-px bg-foreground" />
+            <span className="w-5 h-px bg-foreground" />
+            <span className="w-5 h-px bg-foreground" />
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="fixed inset-0 z-100 flex items-end justify-center md:hidden">
+            <div
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setMenuOpen(false)}
+            />
+            <div className="relative w-full rounded-t-2xl bg-gray-900/95 backdrop-blur-xl px-6 pt-4 pb-10 border-t border-foreground/10">
+              <div className="mx-auto mb-6 h-1 w-10 rounded-full bg-foreground/30" />
+              <nav className="flex flex-col gap-1">
+                {["Home", "Market", "Product", "Team", "Contact"].map(
+                  (item, index) => (
+                    <button
+                      key={item}
+                      onClick={() => {
+                        scrollToSection(index)
+                        setMenuOpen(false)
+                      }}
+                      className={`flex items-center justify-between w-full px-4 py-4 rounded-xl font-sans text-base font-medium transition-colors ${
+                        currentSection === index
+                          ? "bg-foreground/15 text-foreground"
+                          : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
+                      }`}
+                    >
+                      {item}
+                      {currentSection === index && (
+                        <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
+                      )}
+                    </button>
+                  ),
+                )}
+              </nav>
+            </div>
+          </div>
+        )}
       </nav>
 
       <div
@@ -285,52 +320,65 @@ export default function Home() {
         style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
       >
         {/* Hero Section */}
-        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-end px-6 pb-16 pt-24 md:px-12 md:pb-24">
-          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full">
+        <section className="flex min-h-screen w-screen shrink-0 flex-col justify-center items-center px-6 py-6 md:px-12 md:py-24">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl font-light leading-[1.1] tracking-tight text-foreground duration-1000 md:text-7xl lg:text-8xl">
-                <span className="text-balance">
-                  The Agentic
-                  <br />
+              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl  leading-[1.1] tracking-tight duration-1000 md:text-7xl lg:text-8xl ">
+                <span className="font-light">The Agentic</span>
+                <br />
+                <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
                   Truffle Pig
                 </span>
               </h1>
-              <p className="mb-8 max-w-xl animate-in fade-in slide-in-from-bottom-4 text-lg leading-relaxed text-foreground/90 duration-1000 delay-200 md:text-xl">
-                <span className="text-pretty">
-                  Revenue Operating System For Your Business
-                </span>
+              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 text-lg md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
+                Mit{" "}
+                <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
+                  TRUFFALO.AI
+                </span>{" "}
+                hat dein Sales-Team immer den goldenen Riecher!
               </p>
-              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-4 duration-1000 delay-300 sm:flex-row sm:items-center">
+              <p className="mb-6 animate-in fade-in slide-in-from-bottom-4 text-xs md:text-lg leading-relaxed text-foreground/80 duration-1000 delay-200">
+                Unser Trüffelschwein findet im komplexen Dickicht die wertvollen
+                Daten-Trüffeln und transformiert sie in gewinnbringende
+                Handlungsanweisungen für deine Key Account Manager.
+              </p>
+              <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-2 duration-1000 delay-300 sm:flex-row sm:items-center">
                 <MagneticButton
                   size="lg"
                   variant="primary"
-                  onClick={() => scrollToSection(2)}
+                  onClick={() => {
+                    const a = document.createElement("a")
+                    a.href = "/Truffalo_pitch_web.pdf"
+                    a.download = "Truffalo_pitch_web.pdf"
+                    a.click()
+                  }}
                 >
-                  Product Info
+                  Download Pitch
                 </MagneticButton>
                 <MagneticButton
                   size="lg"
                   variant="secondary"
                   onClick={() => scrollToSection(4)}
+                  className="hidden sm:block"
                 >
                   Contact Us
                 </MagneticButton>
               </div>
             </div>
 
-            <div className="w-64 md:w-64 lg:w-96">
+            <div className="w-56 md:w-72 lg:w-120">
               <Image
                 src="/T_logo.jpg"
                 alt="TRUFFALO.AI Logo"
                 width={400}
                 height={400}
                 sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 400px"
-                className="object-contain w-full h-auto"
+                className="object-contain w-full h-auto rounded-lg"
               />
             </div>
           </div>
 
-          <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
+          <div className="absolute bottom-2 md:bottom-6 left-1/2 -translate-x-1/2 animate-in fade-in duration-1000 delay-500">
             <div className="flex items-center gap-2">
               <p className="font-mono text-xs text-foreground/80">
                 Scroll to explore

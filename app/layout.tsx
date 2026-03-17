@@ -7,6 +7,7 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://truffalo.ai"),
   title: "TRUFFALO.AI",
   description: "Value beyound the visible",
   keywords: ["TRUFFALO.AI", "AI", "CRM", "AI-agents", "automation", "agentic"],
