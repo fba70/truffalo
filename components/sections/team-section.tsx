@@ -30,9 +30,9 @@ export function TeamSection({
               <h2 className="font-sans text-3xl font-light tracking-tight text-foreground md:text-6xl lg:text-7xl">
                 Our Team
               </h2>
-              <div className="hidden md:block md:w-72 lg:w-120 mt-10">
+              <div className="hidden md:block md:w-72 lg:w-130 mt-10 border-2 border-foreground/80 rounded-lg overflow-hidden">
                 <Image
-                  src="/T_logo.jpg"
+                  src="/LinkedIn_Bild.jpg"
                   alt="TRUFFALO.AI Logo"
                   width={400}
                   height={400}
@@ -110,7 +110,7 @@ export function TeamSection({
                   </div>
                   {/* Bottom block: comment + text */}
                   <div className="flex flex-col gap-1">
-                    <div className="font-mono text-sm text-foreground/90 md:text-lg">
+                    <div className="font-mono text-sm text-foreground/90 md:text-xl">
                       {stat.comment}
                     </div>
                     <div className="font-mono text-xs text-foreground/70 md:text-base">

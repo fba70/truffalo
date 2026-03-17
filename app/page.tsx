@@ -226,7 +226,7 @@ export default function Home() {
             />
           </div>
           <span className="font-sans text-xl md:text-3xl font-semibold tracking-wide bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
-            TRUFFALO.AI
+            truffalo.ai
           </span>
         </button>
 
@@ -333,7 +333,7 @@ export default function Home() {
               <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 text-lg md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
                 Mit{" "}
                 <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
-                  TRUFFALO.AI
+                  truffalo.ai
                 </span>{" "}
                 hat dein Sales-Team immer den goldenen Riecher!
               </p>
@@ -353,7 +353,7 @@ export default function Home() {
                     a.click()
                   }}
                 >
-                  Download Pitch
+                  Download Pitch Slides
                 </MagneticButton>
                 <MagneticButton
                   size="lg"

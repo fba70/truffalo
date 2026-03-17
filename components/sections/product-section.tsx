@@ -63,7 +63,7 @@ export function ProductSection() {
             >
               {/* Mobile: image left + text right */}
               <div className="flex gap-4 md:hidden">
-                <div className="w-1/4 shrink-0 overflow-hidden rounded-lg">
+                <div className="w-20 h-20 shrink-0 overflow-hidden rounded-lg border border-foreground/80">
                   <Image
                     src={card.image}
                     alt={card.title}
@@ -83,7 +83,7 @@ export function ProductSection() {
               </div>
               {/* Desktop: vertical stack */}
               <div className="hidden md:flex md:flex-col md:gap-3">
-                <div className="relative w-full overflow-hidden rounded-lg">
+                <div className="relative w-full overflow-hidden rounded-lg border-2 border-foreground/80">
                   <Image
                     src={card.image}
                     alt={card.title}

@@ -129,7 +129,7 @@ export function ContactSection() {
                 a.click()
               }}
             >
-              Download Pitch
+              Download Pitch Slides
             </MagneticButton>
           </div>
         </div>
@@ -151,99 +151,3 @@ export function ContactSection() {
     </section>
   )
 }
-
-/*
-<form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "200ms" }}
-              >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) =>
-                    setFormData({ ...formData, name: e.target.value })
-                  }
-                  required
-                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
-                  placeholder="Your name"
-                />
-              </div>
-
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "350ms" }}
-              >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                  required
-                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-16 opacity-0"
-                }`}
-                style={{ transitionDelay: "500ms" }}
-              >
-                <label className="mb-1 block font-mono text-xs text-foreground/60 md:mb-2">
-                  Message
-                </label>
-                <textarea
-                  rows={3}
-                  value={formData.message}
-                  onChange={(e) =>
-                    setFormData({ ...formData, message: e.target.value })
-                  }
-                  required
-                  className="w-full border-b border-foreground/30 bg-transparent py-1.5 text-sm text-foreground placeholder:text-foreground/40 focus:border-foreground/50 focus:outline-none md:py-2 md:text-base"
-                  placeholder="Tell us about your project..."
-                />
-              </div>
-
-              <div
-                className={`transition-all duration-700 ${
-                  isVisible
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-12 opacity-0"
-                }`}
-                style={{ transitionDelay: "650ms" }}
-              >
-                <MagneticButton
-                  variant="primary"
-                  size="lg"
-                  className="w-full disabled:opacity-50"
-                  onClick={isSubmitting ? undefined : undefined}
-                >
-                  {isSubmitting ? "Sending..." : "Send Message"}
-                </MagneticButton>
-                {submitSuccess && (
-                  <p className="mt-3 text-center font-mono text-sm text-foreground/80">
-                    Message sent successfully!
-                  </p>
-                )}
-              </div>
-            </form>
-*/
