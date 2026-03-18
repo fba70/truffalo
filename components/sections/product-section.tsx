@@ -23,7 +23,7 @@ const cards = [
 
 const bottomBullets = [
   "Deep Sales Intelligence durch Context Graphs",
-  "Model Agnostik durch modulare Architektur",
+  "LLM Modelle Agnostik durch modulare Architektur",
   "Automatisierte Datenmigration und Inbetriebnahme in 3 Tagen",
   "Sovereign-by-Design durch Split-Brain-Architektur",
 ]
