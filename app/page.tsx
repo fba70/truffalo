@@ -2,6 +2,7 @@
 
 import { Shader, Swirl } from "shaders/react"
 import { MarketSection } from "@/components/sections/market-section"
+import { UseCasesSection } from "@/components/sections/use-cases-section"
 import { ProductSection } from "@/components/sections/product-section"
 import { TeamSection } from "@/components/sections/team-section"
 import { ContactSection } from "@/components/sections/contact-section"
@@ -79,7 +80,7 @@ export default function Home() {
       const deltaX = touchStartX.current - touchEndX
 
       if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 50) {
-        if (deltaY > 0 && currentSection < 4) {
+        if (deltaY > 0 && currentSection < 5) {
           scrollToSection(currentSection + 1)
         } else if (deltaY < 0 && currentSection > 0) {
           scrollToSection(currentSection - 1)
@@ -158,7 +159,7 @@ export default function Home() {
         if (
           newSection !== currentSection &&
           newSection >= 0 &&
-          newSection <= 4
+          newSection <= 5
         ) {
           setCurrentSection(newSection)
         }
@@ -231,7 +232,7 @@ export default function Home() {
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Challenge", "Solution", "Team", "Contact"].map(
+          {["Home", "Challenge", "Solution", "Use Cases", "Team", "Contact"].map(
             (item, index) => (
               <button
                 key={item}
@@ -258,7 +259,7 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <MagneticButton
             variant="secondary"
-            onClick={() => scrollToSection(4)}
+            onClick={() => scrollToSection(5)}
             className="text-xs px-2 py-1.5 md:text-sm md:px-4 md:py-2"
           >
             Contact Us
@@ -284,7 +285,7 @@ export default function Home() {
             <div className="relative w-full rounded-t-2xl bg-gray-900/95 backdrop-blur-xl px-6 pt-4 pb-10 border-t border-foreground/10">
               <div className="mx-auto mb-6 h-1 w-10 rounded-full bg-foreground/30" />
               <nav className="flex flex-col gap-1">
-                {["Home", "Market", "Product", "Team", "Contact"].map(
+                {["Home", "Market", "Product", "Use Cases", "Team", "Contact"].map(
                   (item, index) => (
                     <button
                       key={item}
@@ -358,7 +359,7 @@ export default function Home() {
                 <MagneticButton
                   size="lg"
                   variant="secondary"
-                  onClick={() => scrollToSection(4)}
+                  onClick={() => scrollToSection(5)}
                   className="hidden sm:block"
                 >
                   Contact Us
@@ -392,6 +393,7 @@ export default function Home() {
 
         <MarketSection />
         <ProductSection />
+        <UseCasesSection />
         <TeamSection scrollToSection={scrollToSection} />
         <ContactSection />
       </div>
