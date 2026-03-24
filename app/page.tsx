@@ -219,7 +219,7 @@ export default function Home() {
         >
           <div className="flex h-8 w-8 md:h-10 md:w-10 items-center justify-center rounded-lg bg-foreground/15 backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-foreground/25">
             <Image
-              src="/T_icon.jpg"
+              src="/TP_golden_icon_small.jpg"
               alt="TRUFFALO.AI Logo"
               width={40}
               height={40}
@@ -232,28 +232,31 @@ export default function Home() {
         </button>
 
         <div className="hidden items-center gap-8 md:flex">
-          {["Home", "Challenge", "Solution", "Use Cases", "Team", "Contact"].map(
-            (item, index) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(index)}
-                className={`group relative font-sans text-base font-medium transition-colors ${
-                  currentSection === index
-                    ? "text-foreground"
-                    : "text-foreground/80 hover:text-foreground"
+          {[
+            "Home",
+            "Challenge",
+            "Solution",
+            "Use Cases",
+            "Team",
+            "Contact",
+          ].map((item, index) => (
+            <button
+              key={item}
+              onClick={() => scrollToSection(index)}
+              className={`group relative font-sans text-base font-medium transition-colors ${
+                currentSection === index
+                  ? "text-foreground"
+                  : "text-foreground/80 hover:text-foreground"
+              }`}
+            >
+              {item}
+              <span
+                className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
+                  currentSection === index ? "w-full" : "w-0 group-hover:w-full"
                 }`}
-              >
-                {item}
-                <span
-                  className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
-                    currentSection === index
-                      ? "w-full"
-                      : "w-0 group-hover:w-full"
-                  }`}
-                />
-              </button>
-            ),
-          )}
+              />
+            </button>
+          ))}
         </div>
 
         <div className="flex items-center gap-3">
@@ -285,27 +288,32 @@ export default function Home() {
             <div className="relative w-full rounded-t-2xl bg-gray-900/95 backdrop-blur-xl px-6 pt-4 pb-10 border-t border-foreground/10">
               <div className="mx-auto mb-6 h-1 w-10 rounded-full bg-foreground/30" />
               <nav className="flex flex-col gap-1">
-                {["Home", "Market", "Product", "Use Cases", "Team", "Contact"].map(
-                  (item, index) => (
-                    <button
-                      key={item}
-                      onClick={() => {
-                        scrollToSection(index)
-                        setMenuOpen(false)
-                      }}
-                      className={`flex items-center justify-between w-full px-4 py-4 rounded-xl font-sans text-base font-medium transition-colors ${
-                        currentSection === index
-                          ? "bg-foreground/15 text-foreground"
-                          : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
-                      }`}
-                    >
-                      {item}
-                      {currentSection === index && (
-                        <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
-                      )}
-                    </button>
-                  ),
-                )}
+                {[
+                  "Home",
+                  "Market",
+                  "Product",
+                  "Use Cases",
+                  "Team",
+                  "Contact",
+                ].map((item, index) => (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      scrollToSection(index)
+                      setMenuOpen(false)
+                    }}
+                    className={`flex items-center justify-between w-full px-4 py-4 rounded-xl font-sans text-base font-medium transition-colors ${
+                      currentSection === index
+                        ? "bg-foreground/15 text-foreground"
+                        : "text-foreground/70 hover:bg-foreground/10 hover:text-foreground"
+                    }`}
+                  >
+                    {item}
+                    {currentSection === index && (
+                      <span className="h-1.5 w-1.5 rounded-full bg-foreground" />
+                    )}
+                  </button>
+                ))}
               </nav>
             </div>
           </div>
@@ -369,11 +377,11 @@ export default function Home() {
 
             <div className="w-56 md:w-72 lg:w-120">
               <Image
-                src="/T_logo.jpg"
+                src="/TP_logo_golden.jpg"
                 alt="TRUFFALO.AI Logo"
-                width={400}
+                width={352}
                 height={400}
-                sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 400px"
+                sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 352px"
                 className="object-contain w-full h-auto rounded-lg"
               />
             </div>

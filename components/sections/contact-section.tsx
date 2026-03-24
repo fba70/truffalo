@@ -138,9 +138,9 @@ export function ContactSection() {
         <div className="flex flex-col justify-center items-center">
           <div className="w-64 md:w-64 lg:w-96">
             <Image
-              src="/T_logo.jpg"
+              src="/TP_logo_golden.jpg"
               alt="TRUFFALO.AI Logo"
-              width={400}
+              width={352}
               height={400}
               sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 400px"
               className="object-contain w-full h-auto rounded-lg"
