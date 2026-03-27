@@ -136,7 +136,7 @@ export function ContactSection() {
 
         {/* Right side - Minimal form */}
         <div className="flex flex-col justify-center items-center">
-          <div className="w-64 md:w-64 lg:w-96">
+          <div className="w-48 md:w-64 lg:w-96">
             <Image
               src="/TP_logo_golden.jpg"
               alt="TRUFFALO.AI Logo"
