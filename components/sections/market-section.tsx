@@ -93,7 +93,7 @@ function Column({
         {items.map((item, i) => (
           <li key={i} className="flex items-start gap-2 md:gap-3">
             <span className="mt-1 shrink-0 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-foreground/70 translate-y-1" />
-            <p className="font-mono text-sm leading-snug text-foreground md:text-2xl md:leading-relaxed">
+            <p className="text-sm leading-snug text-foreground md:text-2xl md:leading-relaxed">
               {item}
             </p>
           </li>

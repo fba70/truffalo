@@ -46,7 +46,7 @@ export function UseCasesSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-6 md:px-12 md:pt-6 lg:px-16"
+      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-6 md:px-12 md:pt-6 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl flex flex-col h-full justify-center gap-6 md:gap-10">
         <div
@@ -90,10 +90,10 @@ export function UseCasesSection() {
                       {uc.title}{" "}
                       <span className="text-foreground/60">{uc.subtitle}</span>
                     </h3>
-                    <p className="font-mono text-[11px] leading-snug text-foreground/60">
+                    <p className="text-xs font-mono leading-snug text-foreground/60">
                       {uc.goal}
                     </p>
-                    <p className="font-mono text-[11px] leading-snug text-foreground/80">
+                    <p className="text-xs leading-snug text-foreground/80">
                       {uc.mobile}
                     </p>
                   </div>
@@ -120,7 +120,7 @@ export function UseCasesSection() {
                     <p className="font-mono text-sm text-foreground/60 lg:text-xl">
                       - {uc.goal}
                     </p>
-                    <p className="font-mono text-sm leading-relaxed text-foreground/80 lg:text-base max-w-4xl">
+                    <p className="text-xs leading-relaxed text-foreground/80 lg:text-lg max-w-4xl">
                       {uc.desktop}
                     </p>
                   </div>

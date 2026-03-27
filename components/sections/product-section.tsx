@@ -24,6 +24,8 @@ const cards = [
 const bottomBullets = [
   "Deep Sales Intelligence durch Context Graphs",
   "LLM Modelle Agnostik durch modulare Architektur",
+  "Behält Entscheidungen und die Gründe dafür im Gedächtnis",
+  "Gilt für alle Unternehmensdaten und -prozesse",
   "Automatisierte Datenmigration und Inbetriebnahme in 3 Tagen",
   "Sovereign-by-Design durch Split-Brain-Architektur",
 ]
@@ -76,7 +78,7 @@ export function ProductSection() {
                   <h3 className="font-sans text-base font-medium text-foreground">
                     {card.title}
                   </h3>
-                  <p className="font-mono text-xs leading-snug text-foreground/80">
+                  <p className="text-xs leading-snug text-foreground/80">
                     {card.text}
                   </p>
                 </div>
@@ -95,7 +97,7 @@ export function ProductSection() {
                 <h3 className="font-sans text-xl font-medium text-foreground lg:text-3xl lg:mt-2">
                   {card.title}
                 </h3>
-                <p className="font-mono text-xs leading-relaxed text-foreground/70 md:text-lg">
+                <p className="text-xs text-foreground/70 md:text-lg">
                   {card.text}
                 </p>
               </div>
@@ -114,9 +116,9 @@ export function ProductSection() {
           </h3>
           <ul className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3">
             {bottomBullets.map((bullet, i) => (
-              <li key={i} className="flex items-start gap-2">
-                <span className="mt-1.5 shrink-0 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-foreground/70" />
-                <p className="font-mono text-sm leading-snug text-foreground md:text-base md:leading-relaxed">
+              <li key={i} className="flex items-center gap-2">
+                <span className="shrink-0 w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-foreground/70" />
+                <p className="text-sm text-foreground md:text-xl md:leading-relaxed">
                   {bullet}
                 </p>
               </li>

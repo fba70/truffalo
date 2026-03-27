@@ -332,15 +332,16 @@ export default function Home() {
         <section className="flex min-h-screen w-screen shrink-0 flex-col justify-center items-center px-6 py-6 md:px-12 md:py-24">
           <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl  leading-[1.1] tracking-tight duration-1000 md:text-7xl lg:text-8xl ">
+              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl  leading-[1.1] tracking-tight duration-1000 md:text-7xl lg:text-8xl ">
                 <span className="font-light">The Agentic</span>
                 <br />
                 <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
                   Truffle Pig
                 </span>
               </h1>
-              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 text-lg md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
-                Mit{" "}
+              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 text-base md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
+                Lassen wir uns mit dem Mythos aufräumen, dass „CRM dort endet,
+                wo der eigentliche Verkauf beginnt“! Mit{" "}
                 <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
                   truffalo.ai
                 </span>{" "}
@@ -351,6 +352,7 @@ export default function Home() {
                 Daten-Trüffeln und transformiert sie in gewinnbringende
                 Handlungsanweisungen für deine Key Account Manager.
               </p>
+
               <div className="flex animate-in fade-in slide-in-from-bottom-4 flex-col gap-2 duration-1000 delay-300 sm:flex-row sm:items-center">
                 <MagneticButton
                   size="lg"
@@ -375,7 +377,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-56 md:w-72 lg:w-120">
+            <div className="w-48 md:w-72 lg:w-120">
               <Image
                 src="/TP_logo_golden.jpg"
                 alt="TRUFFALO.AI Logo"

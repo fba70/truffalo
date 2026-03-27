@@ -103,7 +103,7 @@ export function TeamSection({
                       <div className="font-sans text-2xl font-light text-foreground md:text-4xl">
                         {stat.label}
                       </div>
-                      <div className="font-mono text-lg text-foreground/80 md:text-2xl">
+                      <div className="text-lg text-foreground/80 md:text-2xl">
                         {stat.sublabel}
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export function TeamSection({
                     <div className="font-mono text-sm text-foreground/90 md:text-xl">
                       {stat.comment}
                     </div>
-                    <div className="font-mono text-xs text-foreground/70 md:text-base">
+                    <div className="text-xs text-foreground/70 md:text-base">
                       {stat.text}
                     </div>
                   </div>
