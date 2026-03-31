@@ -13,7 +13,8 @@ export function ContactSection() {
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-6 pt-6 md:px-12 md:pt-6 lg:px-16"
+      id="contact"
+      className="flex w-full px-6 pt-24 pb-12 md:min-h-screen md:items-center md:px-12 md:pt-28 md:pb-16 lg:px-16"
     >
       <div className="mx-auto w-full max-w-7xl grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-16 lg:gap-16">
         <div className="flex flex-col justify-center">

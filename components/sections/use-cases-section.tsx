@@ -40,15 +40,26 @@ const useCases = [
   },
 ]
 
+/*
+                    <Image
+                      src={uc.image}
+                      alt={uc.title}
+                      width={800}
+                      height={436}
+                      className="object-cover rounded-lg"
+                    />
+*/
+
 export function UseCasesSection() {
   const { ref, isVisible } = useReveal(0.3)
 
   return (
     <section
       ref={ref}
-      className="flex h-screen w-screen shrink-0 snap-start items-center px-4 pt-6 md:px-12 md:pt-6 lg:px-16"
+      id="use-cases"
+      className="flex w-full px-4 pt-24 pb-12 md:min-h-screen md:items-center md:px-12 md:pt-28 md:pb-16 lg:px-16"
     >
-      <div className="mx-auto w-full max-w-7xl flex flex-col h-full justify-center gap-6 md:gap-10">
+      <div className="mx-auto w-full max-w-7xl flex flex-col gap-6 md:gap-10">
         <div
           className={`transition-all duration-700 ${
             isVisible
@@ -77,13 +88,7 @@ export function UseCasesSection() {
                 {/* Mobile layout */}
                 <div className="flex gap-4 md:hidden">
                   <div className="flex h-18 w-18 shrink-0 items-center justify-center">
-                    <Image
-                      src={uc.image}
-                      alt={uc.title}
-                      width={800}
-                      height={436}
-                      className="object-cover rounded-sm"
-                    />
+                    <Icon className="h-20 w-20 text-foreground" />
                   </div>
                   <div className="flex flex-col gap-1">
                     <h3 className="font-sans text-sm font-medium text-foreground leading-tight">
@@ -101,14 +106,8 @@ export function UseCasesSection() {
 
                 {/* Desktop layout */}
                 <div className="hidden md:flex md:gap-6 lg:gap-10 md:items-start">
-                  <div className="flex h-48 w-48 lg:h-48 lg:w-48 shrink-0 items-center justify-center">
-                    <Image
-                      src={uc.image}
-                      alt={uc.title}
-                      width={800}
-                      height={436}
-                      className="object-cover rounded-lg"
-                    />
+                  <div className="flex h-48 w-48 lg:h-48 lg:w-48 shrink-0 items-center justify-center rounded-xl bg-foreground/5 border border-foreground/10">
+                    <Icon className="h-32 w-32 text-foreground" />
                   </div>
                   <div className="flex flex-col gap-2.5">
                     <h3 className="font-sans text-xl font-medium text-foreground lg:text-4xl">
