@@ -10,8 +10,22 @@ import { MagneticButton } from "@/components/magnetic-button"
 import { useRef, useEffect, useState } from "react"
 import Image from "next/image"
 
-const sections = ["home", "challenge", "solution", "use-cases", "team", "contact"]
-const sectionLabels = ["Home", "Challenge", "Solution", "Use Cases", "Team", "Contact"]
+const sections = [
+  "home",
+  "challenge",
+  "solution",
+  "use-cases",
+  "team",
+  "contact",
+]
+const sectionLabels = [
+  "Home",
+  "Challenge",
+  "Solution",
+  "Use Cases",
+  "Team",
+  "Contact",
+]
 
 export default function Home() {
   const [currentSection, setCurrentSection] = useState(0)
@@ -166,7 +180,6 @@ export default function Home() {
             <span className="w-5 h-px bg-foreground" />
           </button>
         </div>
-
       </nav>
 
       {menuOpen && (
