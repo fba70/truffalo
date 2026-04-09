@@ -32,6 +32,8 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const shaderContainerRef = useRef<HTMLDivElement>(null)
+  const [videoLoaded, setVideoLoaded] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const checkShaderReady = () => {
@@ -91,6 +93,19 @@ export default function Home() {
 
     return () => observers.forEach((o) => o.disconnect())
   }, [])
+
+  // Defer video loading until after initial paint
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const timer = setTimeout(() => {
+      video.preload = "auto"
+      video.load()
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  // Lassen wir uns mit dem Mythos aufräumen, dass „CRM dort endet, wo der eigentliche Verkauf beginnt"!
 
   return (
     <main className="relative min-h-screen w-full bg-background">
@@ -223,26 +238,25 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="home"
-          className="flex w-full flex-col items-center px-6 pt-24 pb-12 md:min-h-screen md:justify-center md:px-12 md:pt-28 md:pb-16"
+          className="flex w-full flex-col items-center px-4 pt-30 pb-4 md:min-h-screen md:justify-center md:px-4 md:pt-28 md:pb-16"
         >
-          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <h1 className="mb-6 animate-in fade-in slide-in-from-bottom-8 font-sans text-5xl  leading-[1.1] tracking-tight duration-1000 md:text-7xl lg:text-8xl ">
-                <span className="font-light">The Agentic</span>
-                <br />
-                <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
-                  Truffle Pig
-                </span>
-              </h1>
-              <p className="mb-4 animate-in fade-in slide-in-from-bottom-4 text-base md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
+          <h1 className="mb-3 md:mb-10 animate-in fade-in slide-in-from-bottom-8 font-sans text-6xl leading-[1.1] tracking-tight duration-1000 md:text-7xl lg:text-8xl">
+            <span className="font-light">The Agentic</span>{" "}
+            <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
+              Truffle Pig
+            </span>
+          </h1>
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-12 justify-between w-full max-w-7xl">
+            <div className="md:w-2/5 md:shrink-0">
+              <p className="mb-2 md:mb-4 animate-in fade-in slide-in-from-bottom-4 text-base md:text-2xl leading-relaxed text-foreground/90 duration-1000 delay-200">
                 Lassen wir uns mit dem Mythos aufräumen, dass „CRM dort endet,
-                wo der eigentliche Verkauf beginnt"! Mit{" "}
+                wo der eigentliche Verkauf beginnt"!Mit{" "}
                 <span className="font-medium bg-linear-to-r from-blue-400 via-fuchsia-500 to-orange-500 bg-clip-text text-transparent">
                   truffalo.ai
                 </span>{" "}
                 hat dein Sales-Team immer den goldenen Riecher!
               </p>
-              <p className="mb-6 animate-in fade-in slide-in-from-bottom-4 text-xs md:text-lg leading-relaxed text-foreground/80 duration-1000 delay-200">
+              <p className="mb-3 md:mb-6 animate-in fade-in slide-in-from-bottom-4 text-xs md:text-lg leading-relaxed text-foreground/80 duration-1000 delay-200">
                 Unser Trüffelschwein findet im komplexen Dickicht die wertvollen
                 Daten-Trüffeln und transformiert sie in gewinnbringende
                 Handlungsanweisungen für deine Key Account Manager.
@@ -272,15 +286,31 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="w-48 md:w-72 lg:w-120">
-              <Image
-                src="/TP_logo_golden.jpg"
-                alt="TRUFFALO.AI Logo"
-                width={352}
-                height={400}
-                sizes="(max-width: 640px) 160px, (max-width: 1024px) 256px, 352px"
-                className="object-contain w-full h-auto rounded-lg"
-              />
+            <div className="relative w-full md:flex-1 flex items-center justify-center">
+              {!videoLoaded && (
+                <Image
+                  src="/TP_golden_nobg.png"
+                  alt="TRUFFALO.AI Logo"
+                  width={352}
+                  height={352}
+                  sizes="(max-width: 640px) 192px, (max-width: 1024px) 288px, 480px"
+                  priority
+                  className="absolute inset-0 object-contain w-full h-full"
+                />
+              )}
+              <video
+                ref={videoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="none"
+                poster="/TP_golden_nobg.png"
+                onCanPlayThrough={() => setVideoLoaded(true)}
+                className={`w-full h-full object-contain rounded-lg transition-opacity duration-700 ${videoLoaded ? "opacity-100" : "opacity-0"}`}
+              >
+                <source src="/Truffalo_v2.mp4" type="video/mp4" />
+              </video>
             </div>
           </div>
         </section>
